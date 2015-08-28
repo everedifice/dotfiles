@@ -7,7 +7,7 @@ set hidden
 set clipboard=unnamed
 set encoding=utf-8
 set noswapfile
-set nobackup
+set backupdir=~/.vim/backup//
 set undodir=~/.vim/undo//
 set backspace=indent,eol,start
 set laststatus=2
@@ -115,8 +115,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" TernForVim
+" syntastics
 let g:used_javascript_libs = 'jasmine'
+
+" TernForVim
+let g:tern_show_signature_in_pum = 1
 
 " pangloss/vim-javascript
 let g:javascript_ignore_javaScriptdoc = 1
