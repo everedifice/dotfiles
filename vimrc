@@ -7,7 +7,7 @@ set hidden
 set clipboard=unnamed
 set encoding=utf-8
 set noswapfile
-set backupdir=~/.vim/backup//
+set nobackup
 set undodir=~/.vim/undo//
 set backspace=indent,eol,start
 set laststatus=2
