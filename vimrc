@@ -68,7 +68,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
