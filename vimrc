@@ -125,6 +125,7 @@ let g:tern_show_signature_in_pum = 1
 let g:javascript_ignore_javaScriptdoc = 1
 
 " CtrlP
+let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '.svn\|.git\|dist\|doc\|bower_components\|coverage\|node_modules\|report',
