@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/everedifice/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -91,8 +91,4 @@ export NVM_DIR="/Users/everedifice/.nvm"
 export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
 export GIT_EDITOR=vim
-
-export ANDROID_HOME="$HOME/Downloads/android-sdk-macosx"
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-
 export EDITOR='vim'
