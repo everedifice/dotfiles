@@ -21,7 +21,7 @@ set softtabstop=4
 set shiftwidth=4
 
 set synmaxcol=128
-" set lazyredraw
+set lazyredraw
 set ttyfast
 set scrolloff=5
 
@@ -84,7 +84,10 @@ endif
 
 " devicon
 let g:webdevicons_enable_ctrlp = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
