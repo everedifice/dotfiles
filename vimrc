@@ -1,4 +1,4 @@
-set nocompatible
+" set nocompatible
 filetype off
 
 " settings
@@ -21,7 +21,7 @@ set softtabstop=4
 set shiftwidth=4
 
 set synmaxcol=128
-set lazyredraw
+" set lazyredraw
 set ttyfast
 set scrolloff=5
 
@@ -32,6 +32,7 @@ set background=dark
 colorscheme base16-chalk 
 
 " Change cursor at each mode (command, insert)
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 if exists('$ITERM_PROFILE')
   if exists('$TMUX') 
     let &t_SI = "\<Esc>[3 q"
@@ -50,7 +51,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
@@ -154,6 +154,7 @@ let g:NERDTreeShowHidden = 1
 nmap <Leader>f :NERDTreeToggle<CR>
 
 " YouCompleteMe
+let g:ycm_max_diagnostics_to_display = 10
 let g:ycm_key_list_select_completion = ['<c-j>', '<c-Space>']
 let g:ycm_key_list_previous_completion = ['<c-k>']
 let g:ycm_add_preview_to_completeopt = 0
