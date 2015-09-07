@@ -84,7 +84,8 @@ source $ZSH/oh-my-zsh.sh
 BASE16_SHELL="$HOME/.config/base16-shell/base16-chalk.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-export NVM_DIR="~/.nvm"
+u=$USER
+export NVM_DIR="/Users/$u/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # git
