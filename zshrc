@@ -91,8 +91,4 @@ export NVM_DIR="~/.nvm"
 export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
 export GIT_EDITOR=vim
-
-export ANDROID_HOME="$HOME/Downloads/android-sdk-macosx"
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-
 export EDITOR='vim'
