@@ -93,3 +93,5 @@ export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
 export GIT_EDITOR=vim
 export EDITOR='vim'
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
