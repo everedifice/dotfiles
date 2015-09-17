@@ -69,6 +69,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'kien/ctrlp.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
