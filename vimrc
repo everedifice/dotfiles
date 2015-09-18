@@ -29,7 +29,7 @@ let base16colorspace=256
 
 syntax enable 
 set background=dark
-colorscheme base16-chalk 
+colorscheme base16-railscasts
 
 " Change cursor at each mode (command, insert)
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
