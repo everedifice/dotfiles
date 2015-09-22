@@ -21,7 +21,7 @@ set softtabstop=4
 set shiftwidth=4
 
 set synmaxcol=128
-" set lazyredraw
+set lazyredraw
 set ttyfast
 set scrolloff=5
 
