@@ -1,11 +1,9 @@
-" set nocompatible
 filetype off
 
 " settings
 set number 
 set hidden
 set clipboard=unnamed
-set encoding=utf-8
 set noswapfile
 set backupdir=~/.vim/backup//
 set undodir=~/.vim/undo//
@@ -14,16 +12,12 @@ set laststatus=2
 set relativenumber
 set nohlsearch
 set mouse=a
-
 set expandtab 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
-set synmaxcol=128
-set lazyredraw
-set ttyfast
 set scrolloff=5
+set lazyredraw
 
 let base16colorspace=256
 
@@ -63,7 +57,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'mkitt/tabline.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ryanoasis/vim-webdevicons'
@@ -127,9 +120,6 @@ let g:used_javascript_libs = 'jasmine'
 " TernForVim
 let g:tern_show_signature_in_pum = 1
 
-" pangloss/vim-javascript
-let g:javascript_ignore_javaScriptdoc = 1
-
 " CtrlP
 let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -165,7 +155,6 @@ let g:clang_user_options='|| exit 0'
 set completeopt-=preview
 
 " Shortcuts
-
 ab ㅈ w
 ab ㅈㅂ wq
 
