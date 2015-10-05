@@ -91,8 +91,8 @@ export NVM_DIR="/Users/$u/.nvm"
 # git
 export PATH="/usr/local/git/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:$PATH"
 
-export GIT_EDITOR=vim
-export EDITOR='vim'
+export GIT_EDITOR="nvim"
+export EDITOR="nvim"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
