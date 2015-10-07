@@ -97,3 +97,7 @@ export EDITOR="nvim"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# Alias
+
+alias nvs="nvim -S"
