@@ -70,7 +70,7 @@ let mapleader = "\<Space>"
 
 " IME Change when exit insert mode
 if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.US')
+  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'org.youknowone.inputmethod.Gureum.qwerty')
 endif
 
 " Plugin Configurations
