@@ -47,7 +47,6 @@ Plugin 'L9'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'gavocanov/vim-js-indent'
 Plugin 'bling/vim-airline'
@@ -62,6 +61,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kien/ctrlp.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'fatih/vim-go'
+Plugin 'benekastah/neomake'
 
 call vundle#end()
 filetype plugin indent on
@@ -70,7 +70,7 @@ let mapleader = "\<Space>"
 
 " IME Change when exit insert mode
 if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'org.youknowone.inputmethod.Gureum.qwerty')
+  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
 endif
 
 " Plugin Configurations
@@ -113,8 +113,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" syntastics
-let g:used_javascript_libs = 'jasmine'
+" Neomake
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost *.js Neomake
 
 " TernForVim
 let g:tern_show_signature_in_pum = 1
