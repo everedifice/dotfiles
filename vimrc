@@ -173,6 +173,9 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:clang_user_options='|| exit 0'
 set completeopt-=preview
 
+" Stylus
+autocmd BufRead,BufNewFile *.styl set filetype=stylus
+
 " Shortcuts
 ab ㅈ w
 ab ㅈㅂ wq
