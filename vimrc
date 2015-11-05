@@ -64,6 +64,7 @@ Plugin 'fatih/vim-go'
 Plugin 'benekastah/neomake'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'wavded/vim-stylus'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on
