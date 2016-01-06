@@ -18,6 +18,7 @@ set softtabstop=4
 set shiftwidth=4
 set scrolloff=5
 set lazyredraw
+set colorcolumn=80
 
 let base16colorspace=256
 
@@ -59,6 +60,7 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kien/ctrlp.vim'
+Bundle 'jasoncodes/ctrlp-modified.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'fatih/vim-go'
 Plugin 'benekastah/neomake'
@@ -161,6 +163,7 @@ let g:ctrlp_custom_ignore = {
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+nmap <leader>m :CtrlPModified<cr>
 
 " NERDTree
 let g:NERDTreeShowHidden = 1
