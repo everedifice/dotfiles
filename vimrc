@@ -80,12 +80,6 @@ endif
 
 " Plugin Configurations
 
-" devicon
-let g:webdevicons_enable_ctrlp = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
 "vim bookmark
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
