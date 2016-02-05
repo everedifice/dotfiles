@@ -1,12 +1,10 @@
-filetype off
-
-" settings
+"Settings
 set number 
 set hidden
 set clipboard=unnamed
 set noswapfile
-set backupdir=~/.vim/backup//
-set undodir=~/.vim/undo//
+set backupdir=~/.config/nvim/backup/
+set undodir=~/.config/nvim/undo/
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
@@ -19,101 +17,74 @@ set shiftwidth=4
 set scrolloff=5
 set lazyredraw
 set colorcolumn=80
-
-let base16colorspace=256
-
-syntax enable 
 set background=dark
-colorscheme base16-railscasts
+filetype plugin indent on
+syntax enable 
 
-" Change cursor at each mode (command, insert)
+"Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kien/ctrlp.vim'
+Plug 'jasoncodes/ctrlp-modified.vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'benekastah/neomake'
+
+Plug 'mhinz/vim-signify'
+Plug 'tomtom/tcomment_vim'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-obsession'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mkitt/tabline.vim'
+call plug#end()
+
+"Setting after plugins are load
+let base16colorspace=256
+let mapleader="\<Space>"
+colorscheme base16-railscasts
+set completeopt-=preview
+
+"Change cursor at each mode (command, insert)
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 if exists('$ITERM_PROFILE')
   if exists('$TMUX') 
-    let &t_SI = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[0 q"
+    let &t_SI="\<Esc>[3 q"
+    let &t_EI="\<Esc>[0 q"
   else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_SI="\<Esc>]50;CursorShape=1\x7"
+    let &t_EI="\<Esc>]50;CursorShape=0\x7"
   endif
 end
 
-" Vunble settings
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"Shortcuts
+ab ㅈ w
+ab ㅈㅂ wq
+imap jk <esc>
+imap ㅓㅏ <esc>
+map <C-J> :bprev<CR>
+map <C-K> :bnext<CR>
+nmap <Leader><Leader> V
+nnoremap <Leader><Tab> <C-^>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>o :CtrlP<CR>
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'L9'
+"Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'jason0x43/vim-js-indent'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'msanders/snipmate.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'mhinz/vim-signify'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-obsession'
-Plugin 'mkitt/tabline.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'kien/ctrlp.vim'
-Bundle 'jasoncodes/ctrlp-modified.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'fatih/vim-go'
-Plugin 'benekastah/neomake'
-Plugin 'MattesGroeger/vim-bookmarks'
-Plugin 'wavded/vim-stylus'
-Plugin 'mattn/emmet-vim'
-
-call vundle#end()
-filetype plugin indent on
-
-let mapleader = "\<Space>"
-
-" IME Change when exit insert mode
-if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
-endif
-
-" Plugin Configurations
-
-"vim bookmark
-let g:bookmark_no_default_key_mappings = 1
-function! BookmarkMapKeys()
-    nmap mm :BookmarkToggle<CR>
-    nmap mi :BookmarkAnnotate<CR>
-    nmap mn :BookmarkNext<CR>
-    nmap mp :BookmarkPrev<CR>
-    nmap ma :BookmarkShowAll<CR>
-    nmap mc :BookmarkClear<CR>
-    nmap mx :BookmarkClearAll<CR>
-    nmap mkk :BookmarkMoveUp
-    nmap mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap mm
-    unmap mi
-    unmap mn
-    unmap mp
-    unmap ma
-    unmap mc
-    unmap mx
-    unmap mkk
-    unmap mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
-
-" NERDTress File highlighting
+"NERDTree
+let NERDTreeIgnore=['\.DS_Store$']
+let g:NERDTreeShowHidden=1
+nmap <Leader>f :NERDTreeToggle<CR>
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-
 call NERDTreeHighlightFile('hbs', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
@@ -133,21 +104,18 @@ call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
-let NERDTreeIgnore = ['\.DS_Store$']
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-autocmd! BufWritePost *.js Neomake
-
-" TernForVim
+"TernForVim
 let g:tern_show_signature_in_pum = 1
 
-" CtrlP
+"Deoplete.
+let g:deoplete#enable_at_startup=1
+let g:deoplete#file#enable_buffer_path=1
+
+"Neomake
+let g:neomake_javascript_enabled_makers=['eslint']
+autocmd! BufWritePost *.js Neomake
+
+"CtrlP
 let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
@@ -159,35 +127,4 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
-
-" NERDTree
-let g:NERDTreeShowHidden = 1
-nmap <Leader>f :NERDTreeToggle<CR>
-
-" YouCompleteMe
-let g:ycm_max_diagnostics_to_display = 10
-let g:ycm_key_list_select_completion = ['<c-j>', '<c-Space>']
-let g:ycm_key_list_previous_completion = ['<c-k>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:clang_user_options='|| exit 0'
-set completeopt-=preview
-
-" Stylus
-autocmd BufRead,BufNewFile *.styl set filetype=stylus
-
-" Shortcuts
-ab ㅈ w
-ab ㅈㅂ wq
-
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>r :e<CR>
-nnoremap <Leader>c :SyntasticCheck<CR>
-nnoremap <Leader><Tab> <C-^>
-nmap <Leader><Leader> V
-imap jk <esc>
-imap ㅓㅏ <esc>
-map <C-J> :bprev<CR>
-map <C-K> :bnext<CR>
 
