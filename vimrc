@@ -31,6 +31,10 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
 
+Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
