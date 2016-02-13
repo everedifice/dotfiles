@@ -39,6 +39,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mkitt/tabline.vim'
+
+" plugins for language specific
 Plug 'isRuslan/vim-es6'
 call plug#end()
 
