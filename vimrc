@@ -30,11 +30,6 @@ Plug 'jasoncodes/ctrlp-modified.vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
-
-Plug 'othree/yajs.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
@@ -44,6 +39,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mkitt/tabline.vim'
+Plug 'isRuslan/vim-es6'
 call plug#end()
 
 "Setting after plugins are load
