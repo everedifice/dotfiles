@@ -73,6 +73,7 @@ nmap <Leader><Leader> V
 nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>r :e<CR>
 
 "Airline
 let g:airline#extensions#tabline#enabled = 1
