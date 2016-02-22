@@ -39,6 +39,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mkitt/tabline.vim'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " plugins for language specific
 Plug 'isRuslan/vim-es6'
@@ -74,6 +75,7 @@ nmap <Leader><Leader> V
 nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>r :e<CR>
 
 "Airline
 let g:airline#extensions#tabline#enabled = 1
