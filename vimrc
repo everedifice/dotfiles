@@ -42,6 +42,7 @@ Plug 'mkitt/tabline.vim'
 
 " plugins for language specific
 Plug 'isRuslan/vim-es6'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 "Setting after plugins are load
@@ -130,3 +131,5 @@ nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
 
+"Typescript for vim
+let g:typescript_indent_disable=1
