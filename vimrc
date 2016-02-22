@@ -40,7 +40,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mkitt/tabline.vim'
 Plug 'MattesGroeger/vim-bookmarks'
-
 " plugins for language specific
 Plug 'isRuslan/vim-es6'
 call plug#end()
@@ -71,6 +70,7 @@ imap ㅓㅏ <esc>
 map <C-J> :bprev<CR>
 map <C-K> :bnext<CR>
 nmap <Leader><Leader> V
+nmap <Leader>f :NERDTreeToggle<CR>
 nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
@@ -84,7 +84,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "NERDTree
 let NERDTreeIgnore=['\.DS_Store$']
 let g:NERDTreeShowHidden=1
-nmap <Leader>f :NERDTreeToggle<CR>
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
