@@ -39,7 +39,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mkitt/tabline.vim'
-Plug 'MattesGroeger/vim-bookmarks'
 " plugins for language specific
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
