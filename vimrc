@@ -77,6 +77,9 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>r :e<CR>
 
+"Remove tailing whitespace at buffer write
+autocmd BufWritePre *.js :%s/\s\+$//e
+
 "Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
