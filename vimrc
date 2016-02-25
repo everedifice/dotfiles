@@ -42,6 +42,7 @@ Plug 'mkitt/tabline.vim'
 " plugins for language specific
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 "Setting after plugins are load
