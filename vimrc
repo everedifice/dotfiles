@@ -8,7 +8,6 @@ set undodir=~/.config/nvim/undo/
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
-set nohlsearch
 set mouse=a
 set expandtab 
 set tabstop=4
@@ -49,6 +48,7 @@ call plug#end()
 let base16colorspace=256
 let mapleader="\<Space>"
 colorscheme base16-railscasts
+let g:airline_theme='base16'
 set completeopt-=preview
 
 "Change cursor at each mode (command, insert)
