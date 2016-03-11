@@ -24,21 +24,21 @@ syntax enable
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mkitt/tabline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'Shougo/deoplete.nvim'
-Plug 'benekastah/neomake'
+Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mkitt/tabline.vim'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'benekastah/neomake'
 " plugins for language specific
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
