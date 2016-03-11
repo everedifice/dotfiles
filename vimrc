@@ -34,8 +34,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
-
-Plug 'Shougo/deoplete.nvim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'benekastah/neomake'
 " plugins for language specific
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
@@ -113,10 +112,6 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "TernForVim
 let g:tern_show_signature_in_pum = 1
-
-"Deoplete.
-let g:deoplete#enable_at_startup=1
-let g:deoplete#file#enable_buffer_path=1
 
 "Neomake
 let g:neomake_javascript_enabled_makers=['eslint']
