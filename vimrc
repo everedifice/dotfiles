@@ -34,7 +34,6 @@ Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
-
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
 " plugins for language specific
