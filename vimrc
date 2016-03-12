@@ -24,21 +24,19 @@ syntax enable
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mkitt/tabline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'Shougo/deoplete.nvim'
-Plug 'benekastah/neomake'
+Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mkitt/tabline.vim'
-" plugins for language specific
+Plug 'Shougo/deoplete.nvim'
+Plug 'benekastah/neomake'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
@@ -48,6 +46,7 @@ call plug#end()
 let base16colorspace=256
 let mapleader="\<Space>"
 colorscheme base16-railscasts
+let g:airline_theme='base16'
 set completeopt-=preview
 
 "Change cursor at each mode (command, insert)
@@ -115,6 +114,7 @@ let g:tern_show_signature_in_pum = 1
 
 "Deoplete.
 let g:deoplete#enable_at_startup=1
+let g:deoplete#auto_complete_delay=50
 let g:deoplete#file#enable_buffer_path=1
 
 "Neomake
