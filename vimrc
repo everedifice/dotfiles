@@ -8,7 +8,6 @@ set undodir=~/.config/nvim/undo/
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
-set nohlsearch
 set mouse=a
 set expandtab 
 set tabstop=4
