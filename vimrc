@@ -79,9 +79,9 @@ nnoremap <Leader>r :e<CR>
 autocmd BufWritePre *.js :%s/\s\+$//e
 
 "Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#left_alt_sep='|'
 
 "NERDTree
 let NERDTreeIgnore=['\.DS_Store$']
@@ -110,7 +110,8 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "TernForVim
-let g:tern_show_signature_in_pum = 1
+let g:tern_show_signature_in_pum=1
+let g:tern_show_argument_hints=1
 
 "Deoplete.
 let g:deoplete#enable_at_startup=1
@@ -122,7 +123,7 @@ let g:neomake_javascript_enabled_makers=['eslint']
 autocmd! BufWritePost *.js Neomake
 
 "CtrlP
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '.svn\|.git\|dist\|doc\|bower_components\|coverage\|node_modules\|report',
