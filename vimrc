@@ -14,7 +14,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set scrolloff=5
-set lazyredraw
 set colorcolumn=80
 set background=dark
 filetype plugin indent on
@@ -37,6 +36,7 @@ Plug 'tpope/vim-obsession'
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'carlitux/deoplete-ternjs'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
@@ -44,9 +44,10 @@ call plug#end()
 
 "Setting after plugins are load
 let base16colorspace=256
-let mapleader="\<Space>"
-colorscheme base16-railscasts
 let g:airline_theme='base16'
+colorscheme base16-railscasts
+
+let mapleader="\<Space>"
 set completeopt-=preview
 
 "Change cursor at each mode (command, insert)
@@ -109,13 +110,8 @@ call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
-"TernForVim
-let g:tern_show_signature_in_pum=1
-let g:tern_show_argument_hints=1
-
 "Deoplete.
 let g:deoplete#enable_at_startup=1
-let g:deoplete#auto_complete_delay=50
 let g:deoplete#file#enable_buffer_path=1
 
 "Neomake
@@ -127,7 +123,7 @@ let g:ctrlp_show_hidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '.svn\|.git\|dist\|doc\|bower_components\|coverage\|node_modules\|report',
-            \ 'file': '\v\.(exe|so|dll)$',
+            \ 'file': '\v\.(DS_Store|exe|so|dll)$',
             \ 'link': 'some_bad_symbolic_links',
             \ }
 nmap <leader>bb :CtrlPBuffer<cr>
