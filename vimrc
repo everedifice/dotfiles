@@ -37,6 +37,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'carlitux/deoplete-ternjs'
+Plug 'SirVer/ultisnips'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
