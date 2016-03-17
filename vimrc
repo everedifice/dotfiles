@@ -41,6 +41,7 @@ Plug 'SirVer/ultisnips'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
+Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 
 "Setting after plugins are load
