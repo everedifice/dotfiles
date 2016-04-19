@@ -37,6 +37,7 @@ Plug 'SirVer/ultisnips'
 Plug 'benekastah/neomake'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'everedifice/vim-js-syntax'
 call plug#end()
 
 "Setting after plugins are load
