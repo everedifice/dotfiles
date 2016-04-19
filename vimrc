@@ -16,32 +16,25 @@ set shiftwidth=4
 set scrolloff=5
 set colorcolumn=80
 set background=dark
+set synmaxcol=300
 filetype plugin indent on
 syntax enable 
 
 "Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mkitt/tabline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
-Plug 'Shougo/deoplete.nvim'
-Plug 'benekastah/neomake'
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-" Plug 'carlitux/deoplete-ternjs'
 Plug 'SirVer/ultisnips'
-" Plug 'isRuslan/vim-es6'
-Plug 'othree/yajs'
-Plug 'othree/es.next.syntax.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'benekastah/neomake'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
@@ -53,6 +46,11 @@ colorscheme base16-railscasts
 
 let mapleader="\<Space>"
 set completeopt-=preview
+
+" IME Change when exit insert mode
+if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
+  autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
+endif
 
 "Change cursor at each mode (command, insert)
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
