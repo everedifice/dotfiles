@@ -16,7 +16,7 @@ set shiftwidth=4
 set scrolloff=5
 set colorcolumn=80
 set background=dark
-set synmaxcol=300
+set synmaxcol=500
 filetype plugin indent on
 syntax enable 
 
@@ -38,6 +38,7 @@ Plug 'benekastah/neomake'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'everedifice/vim-js-syntax'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 "Setting after plugins are load
@@ -116,6 +117,7 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 "Deoplete.
 let g:deoplete#enable_at_startup=1
 let g:deoplete#file#enable_buffer_path=1
+let g:deoplete#max_list=10
 
 "Neomake
 let g:neomake_javascript_enabled_makers=['eslint']
