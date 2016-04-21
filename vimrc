@@ -39,7 +39,6 @@ Plug 'benekastah/neomake'
 Plug 'mxw/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'everedifice/vim-js-syntax'
-Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 "Setting after plugins are load
