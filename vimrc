@@ -36,8 +36,9 @@ Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim'
 Plug 'benekastah/neomake'
-Plug 'everedifice/vim-js-syntax'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/yajs'
+Plug 'othree/es.next.syntax.vim'
 call plug#end()
 
 "Setting after plugins are load
