@@ -39,6 +39,7 @@ Plug 'benekastah/neomake'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 "Setting after plugins are load
@@ -138,3 +139,6 @@ nmap <leader>m :CtrlPModified<cr>
 
 "Typescript for vim
 let g:typescript_indent_disable=1
+
+"JSX
+let g:jsx_ext_required=0
