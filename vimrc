@@ -10,9 +10,9 @@ set laststatus=2
 set relativenumber
 set mouse=a
 set expandtab 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set scrolloff=5
 set colorcolumn=80
 set background=dark
@@ -135,9 +135,3 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
-
-"Typescript for vim
-let g:typescript_indent_disable=1
-
-"JSX
-let g:jsx_ext_required=0
