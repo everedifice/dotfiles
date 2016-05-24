@@ -39,6 +39,8 @@ Plug 'neomake/neomake'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'gavocanov/vim-js-indent'
 call plug#end()
 
 "Setting after plugins are load
@@ -135,3 +137,6 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
+
+"JSX
+let g:jsx_ext_required=0
