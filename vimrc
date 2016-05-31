@@ -37,10 +37,11 @@ Plug 'SirVer/ultisnips'
 Plug 'Shougo/deoplete.nvim'
 Plug 'neomake/neomake'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/yajs'
-Plug 'othree/es.next.syntax.vim'
-Plug 'mxw/vim-jsx'
-Plug 'gavocanov/vim-js-indent'
+" Plug 'othree/yajs'
+" Plug 'othree/es.next.syntax.vim'
+" Plug 'mxw/vim-jsx'
+" Plug 'gavocanov/vim-js-indent'
+Plug 'everedifice/vim-js-syntax'
 call plug#end()
 
 "Setting after plugins are load
@@ -124,6 +125,8 @@ let g:deoplete#max_list=10
 "Neomake
 let g:neomake_javascript_enabled_makers=['eslint']
 autocmd! BufWritePost *.js Neomake
+let g:neomake_error_sign = {'text': '✗', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '✓', 'texthl': 'WarningMsg'}
 
 "CtrlP
 let g:ctrlp_show_hidden=1
