@@ -101,3 +101,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # Alias
 
 alias nvs="nvim -S"
+alias mux="tmuxinator"
