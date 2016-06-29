@@ -15,7 +15,7 @@ set softtabstop=2
 set shiftwidth=2
 set scrolloff=5
 set colorcolumn=80
-set background=dark
+set background=light
 set synmaxcol=500
 filetype plugin indent on
 syntax enable 
@@ -44,8 +44,8 @@ call plug#end()
 
 "Setting after plugins are load
 let base16colorspace=256
-let g:airline_theme='base16_eighties'
-colorscheme base16-eighties
+let g:airline_theme='solarized'
+colorscheme base16-solarized-light
 
 let mapleader="\<Space>"
 set completeopt-=preview
