@@ -40,14 +40,12 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
 " Plug 'mxw/vim-jsx'
-" Plug 'gavocanov/vim-js-indent'
-" Plug 'everedifice/vim-js-syntax'
 call plug#end()
 
 "Setting after plugins are load
 let base16colorspace=256
-let g:airline_theme='base16'
-colorscheme base16-default
+let g:airline_theme='base16_default'
+colorscheme base16-default-dark
 
 let mapleader="\<Space>"
 set completeopt-=preview
