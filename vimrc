@@ -44,8 +44,8 @@ call plug#end()
 
 "Setting after plugins are load
 let base16colorspace=256
-let g:airline_theme='base16_default'
-colorscheme base16-default-dark
+let g:airline_theme='base16_eighties'
+colorscheme base16-eighties
 
 let mapleader="\<Space>"
 set completeopt-=preview
