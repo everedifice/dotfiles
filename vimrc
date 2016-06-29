@@ -44,7 +44,7 @@ call plug#end()
 
 "Setting after plugins are load
 let base16colorspace=256
-let g:airline_theme='solarized'
+let g:airline_theme='base16'
 colorscheme base16-solarized-light
 
 let mapleader="\<Space>"
