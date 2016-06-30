@@ -123,8 +123,10 @@ let g:deoplete#max_list=10
 "Neomake
 let g:neomake_javascript_enabled_makers=['eslint']
 autocmd! BufWritePost *.js Neomake
-let g:neomake_error_sign = {'text': '✗', 'texthl': 'ErrorMsg'}
-let g:neomake_warning_sign = {'text': '✓', 'texthl': 'WarningMsg'}
+highlight NeomakeErrorMsg ctermfg=09 ctermbg=18
+highlight NeomakeWarnMsg ctermfg=12 ctermbg=18
+let g:neomake_error_sign = {'text': '✗', 'texthl': 'NeomakeErrorMsg'}
+let g:neomake_warning_sign = {'text': '✓', 'texthl': 'NeomakeWarnMsg'}
 
 "CtrlP
 let g:ctrlp_show_hidden=1
