@@ -17,6 +17,8 @@ set scrolloff=5
 set colorcolumn=80
 set background=light
 set synmaxcol=500
+set langmenu=en_US
+let $LANG='en_US'
 filetype plugin indent on
 syntax enable 
 
