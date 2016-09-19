@@ -36,11 +36,16 @@ Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'mustache/vim-mustache-handlebars'
+Plug 'w0rp/ale'
 call plug#end()
+
+let g:ale_linters = {
+\    'javascript': ['eslint']
+\}
 
 "Setting after plugins are load
 let base16colorspace=256
@@ -68,6 +73,11 @@ nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>r :e<CR>
+
+"Change cursor on each mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "Remove tailing whitespace at buffer write
 autocmd BufWritePre *.js :%s/\s\+$//e

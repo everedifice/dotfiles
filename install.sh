@@ -16,11 +16,18 @@ echo "...done"
 # create directory to save backup and undo data
 echo "Create backup and undo directory"
 cd $dir
-mkdir backup
-mkdir undo
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/undo
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+# install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# append custom script to zshrc
+cat zshrc >> ~/.zshrc
