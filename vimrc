@@ -3,8 +3,8 @@ set number
 set hidden
 set clipboard=unnamed
 set noswapfile
-set backupdir=~/.config/nvim/backup/
-set undodir=~/.config/nvim/undo/
+set backupdir=~/.vim/backup/
+set undodir=~/.vim/undo/
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
@@ -36,8 +36,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim'
-Plug 'neomake/neomake'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
@@ -56,18 +54,6 @@ set completeopt-=preview
 if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
   autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
 endif
-
-"Change cursor at each mode (command, insert)
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-if exists('$ITERM_PROFILE')
-  if exists('$TMUX') 
-    let &t_SI="\<Esc>[3 q"
-    let &t_EI="\<Esc>[0 q"
-  else
-    let &t_SI="\<Esc>]50;CursorShape=1\x7"
-    let &t_EI="\<Esc>]50;CursorShape=0\x7"
-  endif
-end
 
 "Shortcuts
 ab ㅈ w
@@ -116,19 +102,6 @@ call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
-
-"Deoplete.
-let g:deoplete#enable_at_startup=1
-let g:deoplete#file#enable_buffer_path=1
-let g:deoplete#max_list=10
-
-"Neomake
-let g:neomake_javascript_enabled_makers=['eslint']
-autocmd! BufWritePost *.js Neomake
-highlight NeomakeErrorMsg ctermfg=09 ctermbg=18
-highlight NeomakeWarnMsg ctermfg=12 ctermbg=18
-let g:neomake_error_sign = {'text': '✗', 'texthl': 'NeomakeErrorMsg'}
-let g:neomake_warning_sign = {'text': '✓', 'texthl': 'NeomakeWarnMsg'}
 
 "CtrlP
 let g:ctrlp_show_hidden=1
