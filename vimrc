@@ -19,6 +19,7 @@ set background=light
 set synmaxcol=500
 set langmenu=en_US
 set pumheight=15
+set hlsearch
 let $LANG='en_US'
 filetype plugin indent on
 syntax enable 
