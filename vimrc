@@ -18,6 +18,7 @@ set colorcolumn=80
 set background=light
 set synmaxcol=500
 set langmenu=en_US
+set pumheight=15
 let $LANG='en_US'
 filetype plugin indent on
 syntax enable 
@@ -38,22 +39,22 @@ Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
 Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
-" Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'mustache/vim-mustache-handlebars'
-Plug 'w0rp/ale'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'maralla/validator.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
-let g:ale_linters = {
-\    'javascript': ['eslint']
-\}
-
-"Setting after plugins are load
+" Setting after plugins are load
 let base16colorspace=256
 let g:airline_theme='base16'
 colorscheme base16-solarized-light
 
 let mapleader="\<Space>"
 set completeopt-=preview
+
+"Remove tailing whitespace at buffer write
+autocmd BufWritePre *.js :%s/\s\+$//e
 
 " IME Change when exit insert mode
 if has('mac') && filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
@@ -74,13 +75,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>r :e<CR>
 
-"Change cursor on each mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-"Remove tailing whitespace at buffer write
-autocmd BufWritePre *.js :%s/\s\+$//e
+"PLUGIN SETTINGS
 
 "Airline
 let g:airline#extensions#tabline#enabled=1
@@ -128,3 +123,11 @@ nmap <leader>m :CtrlPModified<cr>
 
 "JSX
 let g:jsx_ext_required=0
+
+"Validator
+let g:validator_javascript_checkers=['eslint']
+let g:validator_filetype_map={'javascript.jsx': 'javascript'}
+let g:validator_warning_symbol='✓'
+let g:validator_error_symbol='✗'
+highlight ValidatorErrorSign ctermbg=18 ctermfg=09
+highlight ValidatorWarningSign ctermbg=18 ctermfg=12
