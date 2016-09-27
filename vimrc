@@ -42,9 +42,12 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'maralla/validator.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
-let g:airline_theme='solarized'
+let base16colorspace=256
+colorscheme base16-github
+let g:airline_theme='base16'
 let mapleader="\<Space>"
 set completeopt-=preview
 
