@@ -25,7 +25,6 @@ syntax enable
 
 "Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
@@ -45,11 +44,7 @@ Plug 'maralla/validator.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
-" Setting after plugins are load
-let base16colorspace=256
-let g:airline_theme='base16'
-colorscheme base16-solarized-light
-
+let g:airline_theme='solarized'
 let mapleader="\<Space>"
 set completeopt-=preview
 
