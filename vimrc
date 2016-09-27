@@ -42,9 +42,11 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'maralla/validator.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
-let g:airline_theme='solarized'
+colorscheme PaperColor
+let g:airline_theme='papercolor'
 let mapleader="\<Space>"
 set completeopt-=preview
 
