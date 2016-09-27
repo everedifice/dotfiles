@@ -16,11 +16,10 @@ set shiftwidth=2
 set scrolloff=5
 set colorcolumn=80
 set background=light
-set synmaxcol=500
 set langmenu=en_US
 set pumheight=15
 set hlsearch
-let $LANG='en_US'
+set lazyredraw
 filetype plugin indent on
 syntax enable 
 
