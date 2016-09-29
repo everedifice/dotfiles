@@ -15,6 +15,7 @@ set softtabstop=2
 set shiftwidth=2
 set scrolloff=5
 set colorcolumn=80
+set synmaxcol=120
 set background=light
 set langmenu=en_US
 set pumheight=15
