@@ -19,7 +19,6 @@ set background=light
 set langmenu=en_US
 set pumheight=15
 set hlsearch
-set lazyredraw
 filetype plugin indent on
 syntax enable 
 
