@@ -45,6 +45,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'maralla/validator.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'chriskempson/base16-vim'
+Plug 'fatih/vim-go'
 call plug#end()
 
 let base16colorspace=256
