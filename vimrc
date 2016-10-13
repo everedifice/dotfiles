@@ -78,6 +78,13 @@ nnoremap <Leader>r :e<CR>
 
 "PLUGIN SETTINGS
 
+"Ultisnip
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+
+"YouCompleteMe
+let g:ycm_key_list_select_completion = ['<c-n>']
+let g:ycm_key_list_previous_completion = ['<c-p>']
+
 "Airline
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
