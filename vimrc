@@ -43,7 +43,6 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'maralla/validator.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'chriskempson/base16-vim'
 Plug 'fatih/vim-go'
 call plug#end()
@@ -80,10 +79,6 @@ nnoremap <Leader>r :e<CR>
 
 "Ultisnip
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-
-"YouCompleteMe
-let g:ycm_key_list_select_completion = ['<c-n>']
-let g:ycm_key_list_previous_completion = ['<c-p>']
 
 "Airline
 let g:airline#extensions#tabline#enabled=1
