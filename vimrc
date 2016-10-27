@@ -22,6 +22,7 @@ set pumheight=15
 set hlsearch
 set lazyredraw
 set ttyfast
+set autochdir
 filetype plugin indent on
 syntax enable 
 
@@ -66,6 +67,7 @@ ab ㅈ w
 ab ㅈㅂ wq
 imap jk <esc>
 imap ㅓㅏ <esc>
+imap <C-u> <C-x><C-f>
 map <C-J> :bprev<CR>
 map <C-K> :bnext<CR>
 nmap <Leader><Leader> V
@@ -88,6 +90,7 @@ let g:airline#extensions#tabline#left_alt_sep='|'
 "NERDTree
 let NERDTreeIgnore=['\.DS_Store$']
 let g:NERDTreeShowHidden=1
+let NERDTreeChDirMode=0
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
