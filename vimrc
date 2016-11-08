@@ -22,7 +22,6 @@ set pumheight=15
 set hlsearch
 set lazyredraw
 set ttyfast
-set autochdir
 filetype plugin indent on
 syntax enable 
 
@@ -43,7 +42,7 @@ Plug 'othree/yajs'
 Plug 'othree/es.next.syntax.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'maralla/validator.vim'
+Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'fatih/vim-go'
 call plug#end()
@@ -76,6 +75,10 @@ nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>r :e<CR>
+
+"입력모드일 때 path 자동완성 relative처리
+autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 
 "PLUGIN SETTINGS
 
@@ -130,10 +133,7 @@ nmap <leader>m :CtrlPModified<cr>
 "JSX
 let g:jsx_ext_required=0
 
-"Validator
-let g:validator_javascript_checkers=['eslint']
-let g:validator_filetype_map={'javascript.jsx': 'javascript'}
-let g:validator_warning_symbol='✓'
-let g:validator_error_symbol='✗'
-highlight ValidatorErrorSign ctermbg=18 ctermfg=09
-highlight ValidatorWarningSign ctermbg=18 ctermfg=12
+"ale
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '✓'
