@@ -20,8 +20,6 @@ set background=light
 set langmenu=en_US
 set pumheight=15
 set hlsearch
-set lazyredraw
-set ttyfast
 filetype plugin indent on
 syntax enable 
 
