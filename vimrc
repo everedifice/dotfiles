@@ -20,6 +20,7 @@ set background=light
 set langmenu=en_US
 set pumheight=15
 set hlsearch
+set breakindent
 filetype plugin indent on
 syntax enable 
 
@@ -43,6 +44,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'fatih/vim-go'
+Plug 'metakirby5/codi.vim'
 call plug#end()
 
 let base16colorspace=256
