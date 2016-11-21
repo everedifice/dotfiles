@@ -21,6 +21,8 @@ set langmenu=en_US
 set pumheight=15
 set hlsearch
 set breakindent
+set exrc
+set secure
 filetype plugin indent on
 syntax enable 
 
