@@ -26,6 +26,13 @@ set secure
 filetype plugin indent on
 syntax enable 
 
+if has("gui_macvim")
+  set guioptions-=L
+  set guioptions-=T
+  set guifont=Hack:h15
+  set synmaxcol=300
+endif
+
 "Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
@@ -51,7 +58,7 @@ Plug 'metakirby5/codi.vim'
 call plug#end()
 
 let base16colorspace=256
-colorscheme base16-github
+colorscheme base16-spacemacs
 let g:airline_theme='base16'
 let mapleader="\<Space>"
 set completeopt-=preview
