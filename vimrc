@@ -23,6 +23,8 @@ set hlsearch
 set breakindent
 set exrc
 set secure
+set ttyfast
+set lazyredraw
 filetype plugin indent on
 syntax enable 
 
@@ -39,15 +41,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
-" Plug 'othree/yajs'
-" Plug 'othree/es.next.syntax.vim'
 Plug 'kern/vim-es7'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
@@ -55,6 +54,7 @@ Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'fatih/vim-go'
 Plug 'metakirby5/codi.vim'
+Plug 'wincent/ferret'
 call plug#end()
 
 let base16colorspace=256
@@ -147,3 +147,6 @@ let g:jsx_ext_required=0
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '✓'
+
+"ferret
+nmap <leader>x <Plug>(FerretAck)
