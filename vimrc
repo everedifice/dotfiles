@@ -151,3 +151,6 @@ let g:ale_sign_warning = '✓'
 
 "ferret
 nmap <leader>x <Plug>(FerretAck)
+
+"Go
+let g:go_fmt_command = "goimports"
