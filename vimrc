@@ -28,34 +28,31 @@ set lazyredraw
 filetype plugin indent on
 syntax enable 
 
-if has("gui_macvim")
-  set guioptions-=L
-  set guioptions-=T
-  set guifont=Hack:h15
-  set synmaxcol=300
-endif
-
 "Plugins
 call plug#begin('~/.vim/plugged')
+" features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-obsession'
 Plug 'SirVer/ultisnips'
+Plug 'wincent/ferret'
+
+" theme
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" language
+Plug 'w0rp/ale'
+Plug 'fatih/vim-go'
+Plug 'rust-lang/rust.vim'
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 Plug 'jambonrose/vim-jsx'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'w0rp/ale'
-Plug 'chriskempson/base16-vim'
-Plug 'fatih/vim-go'
-Plug 'metakirby5/codi.vim'
-Plug 'wincent/ferret'
 call plug#end()
 
 let base16colorspace=256
