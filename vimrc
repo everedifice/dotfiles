@@ -55,6 +55,7 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'othree/html5.vim'
 call plug#end()
 
 let base16colorspace=256
