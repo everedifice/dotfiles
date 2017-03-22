@@ -16,7 +16,7 @@ set shiftwidth=2
 set scrolloff=5
 set colorcolumn=80
 set synmaxcol=200
-set background=light
+set background=dark
 set langmenu=en_US
 set pumheight=15
 set hlsearch
@@ -62,7 +62,6 @@ let base16colorspace=256
 colorscheme base16-spacemacs
 let g:airline_theme='base16'
 let mapleader="\<Space>"
-set completeopt-=preview
 
 "Remove tailing whitespace at buffer write
 autocmd BufWritePre *.js :%s/\s\+$//e
@@ -143,7 +142,7 @@ nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
 
 "ale
-let g:ale_linters = {'javascript': ['eslint']}
+" let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tslint']}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '✓'
 
@@ -151,5 +150,6 @@ let g:ale_sign_warning = '✓'
 nmap <leader>x <Plug>(FerretAck)
 
 "tsu
+" let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_single_quote_import	= 1
 let g:tsuquyomi_import_curly_spacing = 0
