@@ -47,12 +47,14 @@ Plug 'vim-airline/vim-airline-themes'
 
 " language
 Plug 'w0rp/ale'
-Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+
 Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
-Plug 'jambonrose/vim-jsx'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/vim-js-pretty-template'
 call plug#end()
 
 let base16colorspace=256
@@ -75,6 +77,7 @@ ab ㅈㅂ wq
 imap jk <esc>
 imap ㅓㅏ <esc>
 imap <C-u> <C-x><C-f>
+map <C-i> :TsuImpor<CR>
 map <C-J> :bprev<CR>
 map <C-K> :bnext<CR>
 nmap <Leader><Leader> V
@@ -138,9 +141,6 @@ nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 nmap <leader>m :CtrlPModified<cr>
 
-"JSX
-let g:jsx_ext_required=0
-
 "ale
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_sign_error = '✗'
@@ -149,5 +149,6 @@ let g:ale_sign_warning = '✓'
 "ferret
 nmap <leader>x <Plug>(FerretAck)
 
-"Go
-let g:go_fmt_command = "goimports"
+"tsu
+let g:tsuquyomi_single_quote_import	= 1
+let g:tsuquyomi_import_curly_spacing = 0
