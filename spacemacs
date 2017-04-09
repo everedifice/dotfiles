@@ -10,8 +10,10 @@
      javascript
      html
      typescript
+     react
      ivy
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t)
      ;; better-defaults
      emacs-lisp
      git
@@ -19,13 +21,14 @@
      ;; org
      (shell :variables
             shell-default-height 30
+            shell-default-shell 'multi-term
+            shell-default-term-shell "/bin/zsh"
             shell-default-position 'bottom
-            shell-default-full-span nil
-            shell-default-term-shell '/usr/zsh
-            shell-default-shell 'multi-term)
+            shell-default-full-span nil)
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
@@ -94,6 +97,7 @@
 
 (defun dotspacemacs/user-init ()
   (defun my-setup-indent (n)
+    (setq js-indent-level n)
     (setq js2-basic-offset n)
     (setq typescript-indent-level n)
     (setq web-mode-markup-indent-offset n)
@@ -110,16 +114,17 @@
 
   (my-setup-indent 2)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . setup-tide-mode))
 
   (setq-default
+   create-lockfiles nil
+   make-backup-files nil
    dotspacemacs-whitespace-cleanup t
    dotspacemacs-maximized-at-startup t
    exec-path-from-shell-check-startup-files nil
    dotspacemacs-default-font '("Source Code Pro" :size 14 :weight normal :width normal)
    dotspacemacs-line-numbers 'relative
    linum-relative-format "%4s "
-   make-backup-files nil
-   tide-format-options '(:indentSize 2 :tabSize: 2 :insertSpaceAfterFunctionKeywordForAnonymousFunctions nil :placeOpenBraceOnNewLineForFunctions nil)
    company-tooltip-align-annotations t
    ))
 
@@ -129,13 +134,18 @@
    magit-diff-refine-hunk 'all
    powerline-default-separator nil
    ivy-re-builders-alist '((ivy-switch-buffer . ivy--regex-plus) (t . ivy--regex-fuzzy))
-   backup-directory-alist `((".*" . ,temporary-file-directory))
-   auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
    ))
-
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (nginx-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data tide typescript-mode flycheck xterm-color smeargle shell-pop orgit org multi-term mmm-mode markdown-toc markdown-mode magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme))))
+    (winum fuzzy counsel swiper ivy smartparens f projectile helm helm-core yasnippet avy magit ample-theme pos-tip git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl xterm-color ws-butler window-numbering which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit spacemacs-theme spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters quelpa pug-mode popwin persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file nginx-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump define-word counsel-projectile company-web company-tern company-statistics company-quickhelp column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
