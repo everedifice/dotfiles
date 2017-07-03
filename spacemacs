@@ -6,6 +6,7 @@
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
 values."
+
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -338,7 +339,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
    create-lockfiles nil
    make-backup-files nil
    exec-path-from-shell-check-startup-files nil
-   dotspacemacs-default-font '("Hack" :size 15 :weight normal :width normal)
+   dotspacemacs-default-font '("Hack" :size 12 :weight normal :width normal)
    dotspacemacs-line-numbers 'relative
    linum-relative-format "%4s "
    company-tooltip-align-annotations t
