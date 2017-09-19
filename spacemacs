@@ -67,7 +67,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -339,8 +339,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
    create-lockfiles nil
    make-backup-files nil
    exec-path-from-shell-check-startup-files nil
-   dotspacemacs-default-font '("Hack" :size 12 :weight normal :width normal)
    dotspacemacs-line-numbers 'relative
+   dotspacemacs-default-font '("Hack" :size 14 :weight normal :width normal)
    linum-relative-format "%4s "
    company-tooltip-align-annotations t
    )
@@ -353,6 +353,23 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  (defun sort-lines-by-length (b e)
+    (interactive "r")
+    (save-excursion
+      (save-restriction
+        (narrow-to-region b e)
+        (let ((items (sort
+                      (split-string
+                       (buffer-substring (point-min) (point-max)) "[\n]")
+                      (lambda(x y) (< (length x) (length y)))))
+              )
+          (delete-region (point-min) (point-max))
+          (save-excursion
+            (point-min)
+            (insert (apply 'concat (map 'list (lambda (x) (format "%s\n" x)) items))))))))
+
+
   (setq multi-term-program "/bin/zsh")
 
   (setq-default
@@ -368,7 +385,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl powerline spinner markdown-mode skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors hydra parent-mode haml-mode fringe-helper git-gutter+ git-gutter flx git-commit iedit anzu goto-chg undo-tree highlight pkg-info epl swiper web-completion-data dash-functional tern bind-map bind-key packed avy auto-complete popup f dash org-plus-contrib async typescript-mode s magit-popup diminish company counsel smartparens evil projectile yasnippet with-editor js2-mode ivy flycheck helm magit yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox orgit org-bullets open-junk-file nginx-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diff-hl define-word counsel-projectile company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
+    (editorconfig evil-commentary reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl powerline spinner markdown-mode skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors hydra parent-mode haml-mode fringe-helper git-gutter+ git-gutter flx git-commit iedit anzu goto-chg undo-tree highlight pkg-info epl swiper web-completion-data dash-functional tern bind-map bind-key packed avy auto-complete popup f dash org-plus-contrib async typescript-mode s magit-popup diminish company counsel smartparens evil projectile yasnippet with-editor js2-mode ivy flycheck helm magit yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs request rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox orgit org-bullets open-junk-file nginx-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump diff-hl define-word counsel-projectile company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
  '(typescript-auto-indent-flag nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
