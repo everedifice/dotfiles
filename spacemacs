@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -375,8 +375,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    create-lockfiles nil
    make-backup-files nil
    exec-path-from-shell-check-startup-files nil
-   dotspacemacs-default-font '("Hack" :size 12 :weight normal :width normal)
    dotspacemacs-line-numbers 'relative
+   dotspacemacs-default-font '("Hack" :size 14 :weight normal :width normal)
    linum-relative-format "%4s "
    company-tooltip-align-annotations t
    )
@@ -389,6 +389,23 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  (defun sort-lines-by-length (b e)
+    (interactive "r")
+    (save-excursion
+      (save-restriction
+        (narrow-to-region b e)
+        (let ((items (sort
+                      (split-string
+                       (buffer-substring (point-min) (point-max)) "[\n]")
+                      (lambda(x y) (< (length x) (length y)))))
+              )
+          (delete-region (point-min) (point-max))
+          (save-excursion
+            (point-min)
+            (insert (apply 'concat (map 'list (lambda (x) (format "%s\n" x)) items))))))))
+
+
   (setq multi-term-program "/bin/zsh")
 
   (setq-default
@@ -397,6 +414,3 @@ you should place your code here."
    powerline-default-separator nil
    )
   )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
