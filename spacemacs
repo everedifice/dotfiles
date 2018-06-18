@@ -71,7 +71,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(clang-format)
+   dotspacemacs-additional-packages '(clang-format exec-path-from-shell)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -164,6 +164,23 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
 
+   ;; If non-nil then Spacemacs will import your PATH and environment variables
+   ;; from your default shell on startup. This is enabled by default for macOS
+   ;; users and X11 users.
+   dotspacemacs-import-env-vars-from-shell (and (display-graphic-p)
+                                                (or (eq system-type 'darwin)
+                                                    (eq system-type 'gnu/linux)
+                                                    (eq window-system 'x)))
+
+   ;; If nil then use the default shell is used to fetch the environment
+   ;; variables. Set this variable to a different shell executable path to
+   ;; import the environment variables from this shell. Note that
+   ;; `file-shell-name' is preserved and always points to the default shell. For
+   ;; instance to use your fish shell environment variables set this variable to
+   ;; `/usr/local/bin/fish'.
+   ;; (default nil)
+   dotspacemacs-import-env-vars-shell-file-name "/bin/zsh"
+
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -213,7 +230,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 11
+                               :size 13
                                :weight normal
                                :width normal)
 
@@ -247,21 +264,6 @@ It should only modify the values of Spacemacs settings."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
 
-   ;; If non-nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
-
-   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
-   ;; there. (default t)
-   dotspacemacs-retain-visual-state-on-shift t
-
-   ;; If non-nil, `J' and `K' move lines up and down when in visual mode.
-   ;; (default nil)
-   dotspacemacs-visual-line-move-text nil
-
-   ;; If non-nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
-   ;; (default nil)
-   dotspacemacs-ex-substitute-global nil
-
    ;; Name of the default layout (default "Default")
    dotspacemacs-default-layout-name "Default"
 
@@ -290,23 +292,6 @@ It should only modify the values of Spacemacs settings."
 
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
-
-   ;; If non-nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
-
-   ;; if non-nil, the helm header is hidden when there is only one source.
-   ;; (default nil)
-   dotspacemacs-helm-no-header nil
-
-   ;; define the position to display `helm', options are `bottom', `top',
-   ;; `left', or `right'. (default 'bottom)
-   dotspacemacs-helm-position 'bottom
-
-   ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
-   ;; in all non-asynchronous sources. If set to `source', preserve individual
-   ;; source settings. Else, disable fuzzy matching in all sources.
-   ;; (default 'always)
-   dotspacemacs-helm-use-fuzzy 'always
 
    ;; If non-nil, the paste transient-state is enabled. While enabled, pressing
    ;; `p' several times cycles through the elements in the `kill-ring'.
@@ -364,7 +349,9 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil show the color guide hint for transient state keys. (default t)
    dotspacemacs-show-transient-state-color-guide t
 
-   ;; If non-nil unicode symbols are displayed in the mode line. (default t)
+   ;; If non-nil unicode symbols are displayed in the mode line.
+   ;; If you use Emacs as a daemon and wants unicode characters only in GUI set
+   ;; the value to quoted `display-graphic-p'. (default t)
    dotspacemacs-mode-line-unicode-symbols t
 
    ;; If non-nil smooth scrolling (native-scrolling) is enabled. Smooth
@@ -409,6 +396,13 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
    dotspacemacs-enable-server nil
+
+   ;; Set the emacs server socket location.
+   ;; If nil, uses whatever the Emacs default is, otherwise a directory path
+   ;; like \"~/.emacs.d/server\". It has no effect if
+   ;; `dotspacemacs-enable-server' is nil.
+   ;; (default nil)
+   dotspacemacs-server-socket-dir nil
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
@@ -464,6 +458,10 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (when (string= system-type "darwin")
+    (setq dired-use-ls-dired nil)
+    )
+
   (add-to-list 'default-frame-alist
                '(ns-transparent-titlebar . t))
 
@@ -483,8 +481,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    neo-theme 'ascii
    create-lockfiles nil
    make-backup-files nil
-   exec-path-from-shell-check-startup-files nil
-   ))
+   ;; exec-path-from-shell-check-startup-files nil
+   )
+  )
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -499,6 +498,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+
   (defun setup-tide-mode ()
     (interactive)
     (tide-setup)
@@ -525,7 +527,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (toc-org neotree ivy-hydra dumb-jump counsel-projectile company counsel swiper smartparens helm ivy multiple-cursors avy magit memoize flycheck yasnippet-snippets yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package tide tagedit symon string-inflection spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode rjsx-mode reveal-in-osx-finder restart-emacs request rainbow-delimiters pug-mode popwin persp-mode pcre2el pbcopy password-generator paradox overseer osx-trash osx-dictionary org-plus-contrib org-bullets open-junk-file nginx-mode nameless move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc ivy-xref ivy-purpose indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub gh-md fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig diff-hl counsel-css company-web company-tern company-statistics column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ac-ispell))))
+    (exec-path-from-shell elnode yasnippet-snippets yaml-mode ws-butler winum wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen toc-org tide typescript-mode flycheck tagedit symon string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline smex smeargle slim-mode scss-mode sass-mode rjsx-mode reveal-in-osx-finder restart-emacs request rainbow-delimiters pug-mode popwin persp-mode password-generator paradox spinner overseer osx-trash osx-dictionary org-bullets open-junk-file nginx-mode neotree nameless move-text mmm-mode markdown-toc markdown-mode magit-svn magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode link-hint launchctl json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ivy-yasnippet ivy-xref ivy-purpose window-purpose imenu-list ivy-hydra indent-guide impatient-mode htmlize simple-httpd hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core haml-mode google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight emmet-mode elisp-slime-nav editorconfig dumb-jump diff-hl counsel-projectile projectile pkg-info epl counsel-css counsel swiper ivy company-web web-completion-data company-tern dash-functional tern company-statistics company column-enforce-mode clean-aindent-mode clang-format centered-cursor-mode browse-at-remote f dash s auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link avy ac-ispell auto-complete popup which-key use-package pcre2el org-plus-contrib hydra font-lock+ evil goto-chg undo-tree diminish bind-map bind-key async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
