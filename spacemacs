@@ -481,7 +481,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    neo-theme 'ascii
    create-lockfiles nil
    make-backup-files nil
-   ;; exec-path-from-shell-check-startup-files nil
    )
   )
 
