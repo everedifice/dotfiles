@@ -508,6 +508,7 @@ before packages are loaded."
 
   (setq company-tooltip-align-annotations t)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (add-hook 'typescript-mode-hook 'prettier-js-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
