@@ -230,7 +230,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 11
+                               :size 13
                                :weight normal
                                :width normal)
 
@@ -508,6 +508,7 @@ before packages are loaded."
 
   (setq company-tooltip-align-annotations t)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
+  (add-hook 'typescript-mode-hook 'prettier-js-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
