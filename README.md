@@ -2,7 +2,8 @@
 
 ## Tools
 
-- alacritty with tmux
+- tmux
+- alacritty
 - spacemacs
 
 ## Installation
@@ -19,13 +20,13 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus --HEAD --with-natural-title-bars
 git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-# install alacritty with
+# install alacritty
 git clone https://github.com/jwilm/alacritty.git
 cd alacritty
 make app
 cp -r target/release/osx/Alacritty.app /Applications/
 
 #install tmux
-brew install tmux --HEAD
+brew install tmux --HEAD --with-utf8proc
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
