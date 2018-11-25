@@ -70,7 +70,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(prettier-js)
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -502,7 +502,6 @@ before packages are loaded."
 
   (setq company-tooltip-align-annotations t)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
-  (add-hook 'typescript-mode-hook 'prettier-js-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -518,7 +517,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets yaml-mode wgrep web-mode web-beautify toml-mode tide typescript-mode flycheck tagedit smex smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder racer pos-tip pug-mode prettier-js osx-trash osx-dictionary mmm-mode markdown-toc magit-svn magit-gitflow livid-mode skewer-mode launchctl json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra impatient-mode htmlize simple-httpd haml-mode gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy evil-magit magit magit-popup git-commit ghub treepy graphql with-editor emmet-mode diff-hl counsel-css company-web web-completion-data company-tern dash-functional tern company-statistics company cargo markdown-mode rust-mode browse-at-remote auto-yasnippet yasnippet ac-ispell auto-complete pcre2el ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ace-jump-helm-line)))
+   '(yasnippet-snippets yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tide tagedit symon string-inflection spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pug-mode popwin persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile counsel-css company-web company-tern company-statistics column-enforce-mode clean-aindent-mode centered-cursor-mode cargo browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
