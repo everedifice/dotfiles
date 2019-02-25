@@ -33,18 +33,13 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(html
+     typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     osx
-     yaml
-     javascript
-     html
-     typescript
-     rust
      ivy
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t)
@@ -52,6 +47,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      markdown
+     multiple-cursors
      neotree
      ;; org
      ;; (shell :variables
@@ -212,7 +208,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 12
+                               :size 14
                                :weight normal
                                :width normal)
 
@@ -362,6 +358,7 @@ It should only modify the values of Spacemacs settings."
                                                    pdf-view-mode
                                                    text-mode
                                :size-limit-kb 1000)
+
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -454,19 +451,16 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (set-language-environment "Korean")
+
   (prefer-coding-system 'utf-8)
 
   (add-to-list 'default-frame-alist
                '(ns-transparent-titlebar . t))
 
   (add-to-list 'default-frame-alist
-               '(ns-appearance . dark)) ;; or dark - depending on your theme
-
-  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer-elpa-archives)
-  (push '(use-package . "melpa-stable") package-pinned-packages)
+               '(ns-appearance . dark))
 
   (setq-default
-   projectile-enable-caching t
    js-indent-level 2
    js2-basic-offset 2
    typescript-indent-level 2
@@ -476,8 +470,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
    neo-theme 'ascii
    create-lockfiles nil
    make-backup-files nil
-   )
-  )
+   projectile-enable-caching t
+   company-tooltip-align-annotations t
+   ))
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -500,9 +495,7 @@ before packages are loaded."
     (tide-hl-identifier-mode +1)
     (company-mode +1))
 
-  (setq company-tooltip-align-annotations t)
-  (add-hook 'typescript-mode-hook #'setup-tide-mode)
-  )
+  (add-hook 'typescript-mode-hook #'setup-tide-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -517,7 +510,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tide tagedit symon string-inflection spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode reveal-in-osx-finder restart-emacs request rainbow-delimiters racer pug-mode popwin persp-mode pcre2el password-generator paradox overseer osx-trash osx-dictionary org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl counsel-projectile counsel-css company-web company-tern company-statistics column-enforce-mode clean-aindent-mode centered-cursor-mode cargo browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ace-link ac-ispell)))
+   '(writeroom-mode tide flycheck magit-svn evil-nerd-commenter evil-magit dumb-jump doom-modeline browse-at-remote ace-link counsel swiper helm ivy magit transient lv all-the-icons org-plus-contrib hydra yasnippet-snippets ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights visual-fill-column vi-tilde-fringe uuidgen use-package typescript-mode toc-org tagedit symon string-inflection spaceline-all-the-icons smex smeargle slim-mode shrink-path scss-mode sass-mode restart-emacs request rainbow-delimiters pug-mode prettier-js popwin persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make helm-core google-translate golden-ratio gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav eldoc-eval editorconfig dotenv-mode diminish diff-hl define-word counsel-projectile counsel-css company-web company-tern company-statistics column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-window ac-ispell)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -525,3 +518,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  )
 )
+
