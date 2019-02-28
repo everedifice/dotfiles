@@ -2,6 +2,7 @@
 
 ## Tools
 
+- vim
 - tmux
 - alacritty
 - spacemacs
@@ -14,6 +15,7 @@ git clone https://github.com/everedifice/dotfiles.git
 ln -s /Users/[me]/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s /Users/[me]/dotfiles/.spacemacs ~/.spacemacs
 ln -s /Users/[me]/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s /users/[me]/dotfiles/.vimrc ~/.vimrc
 
 # install spacemacs
 brew tap d12frosted/emacs-plus
