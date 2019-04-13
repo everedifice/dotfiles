@@ -33,8 +33,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(html
-     typescript
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -48,7 +47,7 @@ This function should only modify configuration layer settings."
      git
      markdown
      multiple-cursors
-     neotree
+     ;; treemacs
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -57,6 +56,9 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      (version-control :variables
                       version-control-diff-tool 'diff-hl)
+     neotree
+     html
+     typescript
      )
 
    ;; List of additional packages that will be installed without being
@@ -208,7 +210,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal)
 
