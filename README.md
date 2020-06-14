@@ -4,7 +4,6 @@
 
 - vim
 - tmux
-- alacritty
 
 ## Installation
 
